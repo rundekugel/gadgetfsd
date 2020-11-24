@@ -2,12 +2,7 @@
 
 all:wug
 
-incl= 	
-#incl= -I$(PWD)/../arch/arm/include/ 
-#incl+= -I$(PWD)/../include/
-#incl+= -I$(PWD)/../arch/arm/include/ 
-#incl+= -I./
-incl+= -I/usr/local/oecore-x86_64/sysroots/cortexa7t2hf-neon-oe-linux-gnueabi/usr/include
+incl= -I/usr/local/oecore-x86_64/sysroots/cortexa7t2hf-neon-oe-linux-gnueabi/usr/include
 
 #prepro=-D major=0 -Dminor=1 -Dmicro=1
 
