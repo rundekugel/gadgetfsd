@@ -4,7 +4,7 @@
 // MIT License
 
 // Copyright (c) 2016 Grégory Soutadé
-// 2020 WinUSB feature added by beb@stepover.de and rundekugel@github.com
+// 2020 WinUSB feature added by beb-at-stepover.de and rundekugel@github.com
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@
 #define WR_BUF_SIZE 0x2000
 
 //make this configurable
-#define WU_VENDOR_CODE     0xcd    //choose something fitting to all the other stepover devices
+#define WU_VENDOR_CODE     0xcd    //choose something fitting to your purposes
 
 #define VERSION  "1.0.1"
 
@@ -69,6 +69,9 @@
 
 #define USB_EPIN  "/dev/gadget/ep1in"
 #define USB_EPOUT "/dev/gadget/ep2out"
+
+#define USB_VID  0xffff     //enter your own VID here
+#define USB_PID  0xffff     //enter your own PID here
 
 enum {
     STRINGID_MANUFACTURER = 1,
@@ -95,7 +98,7 @@ struct io_thread_args {
 
 //make this configurable
 static struct usb_string stringtab [] = {
-    { STRINGID_MANUFACTURER, "StepOver Test", },
+    { STRINGID_MANUFACTURER, "my Test", },
     { STRINGID_PRODUCT,      "beb's WinUSB Gadget Device", },
     { STRINGID_SERIAL,       "b00000001", },
     { STRINGID_CONFIG_HS,    "High speed configuration", },
@@ -254,8 +257,8 @@ int main(int argc, char** argv)
     device_descriptor.bDeviceSubClass = 0;
     device_descriptor.bDeviceProtocol = 0;
     device_descriptor.bMaxPacketSize0 = 64; //Set by driver?
-    device_descriptor.idVendor = 0x22c9; // My own id
-    device_descriptor.idProduct = 0xeee7; // My own id
+    device_descriptor.idVendor = USB_VID; // My own id
+    device_descriptor.idProduct = USB_PID; // My own id
     device_descriptor.bcdDevice = usbver; // Version
     // Strings
     device_descriptor.iManufacturer = STRINGID_MANUFACTURER;
